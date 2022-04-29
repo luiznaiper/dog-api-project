@@ -36,6 +36,7 @@
 
   code{
       color: var(--text--random);
+      margin-top: 10px;
   }
 
   main{
