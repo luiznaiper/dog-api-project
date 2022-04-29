@@ -1,0 +1,98 @@
+
+   
+:root {
+    /* Colors */
+    --main: #FDF5DF;
+    --principal: #5EBEC4;
+    --secondary: #F92C85    ;
+    --text--random: #353535;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  html {
+    font-size: 62.5%;
+    font-family: "DM Sans", sans-serif;
+  }
+
+  body{
+      background-color: var(--main);
+      color: var(--principal);
+  }
+
+  header {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    min-width: 320px;
+    height: 80px;
+    text-align: center;
+  }
+
+  code{
+      color: var(--text--random);
+  }
+
+  main{
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      min-width: 320px;
+      text-align: center;
+  }
+
+  h2{
+      margin-bottom: 5px;
+  }
+
+  .dog-container{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+  }
+
+  .dog-container img{
+      margin: 25px 0px;
+      border-radius: 5px;
+  }
+
+  .dog-container button{
+      background-color: var(--secondary);
+      color: var(--main);
+      border: 1px solid var(--secondary);
+      padding: 5px 15px;
+      border-radius: 5px;
+  }
+
+  .dog-container button:hover{
+    background-color: transparent;
+    color: var(--secondary);
+    border: 1px solid var(--secondary);
+}
+
+   .reload{
+    background-color: var(--principal);
+    color: var(--main);
+    border: none;
+    padding: 10px 45px;
+    border-radius: 5px;
+    margin: 25px 0;
+  }
+
+  .reload:hover{
+    background-color: transparent;
+    color: var(--principal);
+    border: 1px solid var(--principal);
+  }
+
+  .favorite-dogs{
+      margin-bottom: 30px;
+  }
