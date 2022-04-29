@@ -1,0 +1,6 @@
+.dog-cards-container {
+    display: flex;
+    width: 700px;
+    justify-content: space-around;
+    align-items: center;
+}

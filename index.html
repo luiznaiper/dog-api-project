@@ -9,29 +9,36 @@
     rel="stylesheet"
   />
     <link rel="stylesheet" href="src/main.css">
+    <link
+      rel="stylesheet"
+      href="./src/tablet.css"
+      media="(min-width: 1024px)"
+    />
     <title>Dog List API</title>
 </head>
 <body>
     <header>
         <h1>Consuming dogs</h1>
         <code> By Luis Olivárez </code>
+        <span id="random-error"></span>
     </header>
     <main>
         <section id="random-dogs">
             <h2>Random dogs</h2>
-            <div class="dog-container">
-                <img id="img1" width="150" alt="Dog random picture">
-                <button>Save in favorites</button>
-            </div>
-            <div class="dog-container">
-                <img id="img2" width="150" alt="Dog random picture">
-                <button>Save in favorites</button>
-            </div>
-            <div class="dog-container">
-                <img id="img3" width="150" alt="Dog random picture">
-                <button>Save in favorites</button>
-            </div>
-          
+            <div class="dog-cards-container">
+                <div class="dog-container">
+                    <img id="img1" width="150" alt="Dog random picture">
+                    <button>Save in favorites</button>
+                </div>
+                <div class="dog-container">
+                    <img id="img2" width="150" alt="Dog random picture">
+                    <button>Save in favorites</button>
+                </div>
+                <div class="dog-container">
+                    <img id="img3" width="150" alt="Dog random picture">
+                    <button>Save in favorites</button>
+                </div>
+            </div>    
             <button class="reload" type="button" onclick="reloadImg()">Reload</button>
         </section>
         <section id="favorite-dogs" class="favorite-dogs">
