@@ -4,13 +4,15 @@ const API_URL_RANDOM = 'https://api.thedogapi.com/v1/images/search?limit=6&api_k
 
 const API_URL_FAVORITES = 'https://api.thedogapi.com/v1/favourites?&api_key=a87e0d4e-0554-44c3-88c6-d0fc4983e2fa'
 
+const API_URL_DELETE_FAVORITES = (id) => `https://api.thedogapi.com/v1/favourites/${id}?&api_key=a87e0d4e-0554-44c3-88c6-d0fc4983e2fa`
+
     const reloadImg = async () => {
         try{
             const res = await fetch(API_URL_RANDOM)
             const status = res.status
             if (status !== 200) throw new Error(`New error in ${status}`)
             const data = await res.json()
-            console.log('Load')
+            console.log('Loading random dogs')
             console.log(data)
             const section = document.querySelector('#random-dogs');
             const randomContainer = document.querySelector('.dog-cards-container')
@@ -49,16 +51,23 @@ const loadFavImg = async () => {
         const status = res.status
         if (status !== 200) throw new Error(`New error in ${status}`)
         const data = await res.json()
-        console.log('Favorites')
+        console.log('Favorite dogs')
         console.log(data)
+            const section = document.getElementById('favorite-dogs')
+            section.innerHTML = ""
+            const h2 = document.createElement('h2')
+            const h2Text = document.createTextNode('Favorite Dogs')
+            h2.appendChild(h2Text)
+            section.appendChild(h2)
             data.forEach(dog => {
-                const section = document.getElementById('favorite-dogs')
                 const div = document.createElement('div')
                 div.classList.add('dog-container')
                 const img = document.createElement('img')
                 const btn = document.createElement('button')
                 const btnText = document.createTextNode('Delete from favorites')
+                
                 btn.appendChild(btnText)
+                btn.onclick = () => deleteFavorite(dog.id)
                 img.src =  dog.image.url
                 
                 div. appendChild(img)
@@ -88,15 +97,31 @@ const loadFavImg = async () => {
             })
             const status = res.status
             if (status !== 200) throw new Error(`New error in ${status}`)
-            const data = await res.json()
-            console.log('Save')
+            console.log('Saved in favorites')
             console.log(res)
+            loadFavImg()
         } catch (error){
             console.log(error.message)
             const errorNode = document.querySelector('#random-error')
             errorNode.innerText = `${error.message}`
-        }
-       
+        }  
+    }
+
+    const deleteFavorite = async (id) =>{
+        try{
+            const res = await fetch(API_URL_DELETE_FAVORITES(id), {
+                method: 'DELETE',
+            })
+            const status = res.status
+            if (status !== 200) throw new Error(`New error in ${status}`)
+            console.log('Deleted from favorites')
+            console.log(res)
+            loadFavImg()
+        } catch (error){
+            console.log(error.message)
+            const errorNode = document.querySelector('#random-error')
+            errorNode.innerText = `${error.message}`
+        }  
     }
 
     reloadImg();
