@@ -15,9 +15,18 @@ const API_URL_FAVORITES = 'https://api.thedogapi.com/v1/favourites?&api_key=a87e
             const img1 = document.getElementById('img1')
             const img2= document.getElementById('img2')
             const img3 = document.getElementById('img3')
+            const btn1 = document.getElementById('btn1')
+            const btn2 = document.getElementById('btn2')
+            const btn3 = document.getElementById('btn3')
+
             img1.src = data[0].url
             img2.src = data[1].url
             img3.src = data[2].url
+
+            btn1.onclick = ()=> saveFavorite( data[0].id)
+            btn2.onclick = ()=> saveFavorite( data[1].id)
+            btn3.onclick = ()=>  saveFavorite( data[2].id)
+
         } catch (error){
             console.log(error)
             const errorNode = document.querySelector('#random-error')
@@ -34,6 +43,23 @@ const loadFavImg = async () => {
         const data = await res.json()
         console.log('Favorites')
         console.log(data)
+            data.forEach(dog => {
+                const section = document.getElementById('favorite-dogs')
+                const div = document.createElement('div')
+                div.classList.add('dog-container')
+                const img = document.createElement('img')
+                const btn = document.createElement('button')
+                const btnText = document.createTextNode('Delete from favorites')
+                btn.appendChild(btnText)
+                img.src =  dog.image.url
+                img.width = 150
+                
+                div. appendChild(img)
+                div. appendChild(btn)
+                
+                section.appendChild(div)
+
+            })
         } catch (error){
             console.log(error)
             const errorNode = document.querySelector('#random-error')
@@ -42,7 +68,7 @@ const loadFavImg = async () => {
         
     }
 
-    const saveFavorites = async () =>{
+    const saveFavorite = async (id) =>{
         try{
             const res = await fetch(API_URL_FAVORITES, {
                 method: 'POST',
@@ -50,7 +76,7 @@ const loadFavImg = async () => {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    image_id: 'dje'
+                    image_id: id
                 })
             })
             const status = res.status
@@ -68,4 +94,4 @@ const loadFavImg = async () => {
 
     reloadImg();
     loadFavImg()
-    saveFavorites()
+   
