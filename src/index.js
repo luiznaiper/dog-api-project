@@ -1,5 +1,5 @@
 
-const API_URL_RANDOM = 'https://api.thedogapi.com/v1/images/search?limit=3&api_key=a87e0d4e-0554-44c3-88c6-d0fc4983e2fa'
+const API_URL_RANDOM = 'https://api.thedogapi.com/v1/images/search?limit=6&api_key=a87e0d4e-0554-44c3-88c6-d0fc4983e2fa'
 
 
 const API_URL_FAVORITES = 'https://api.thedogapi.com/v1/favourites?&api_key=a87e0d4e-0554-44c3-88c6-d0fc4983e2fa'

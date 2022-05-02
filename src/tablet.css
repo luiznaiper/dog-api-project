@@ -3,4 +3,11 @@
     width: 700px;
     justify-content: space-around;
     align-items: center;
+    flex-flow: row wrap;
+}
+
+.dog-container{
+    flex: 0 0 33.333%;
+    display: flex;
+    padding: 10px; 
 }
