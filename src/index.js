@@ -12,12 +12,26 @@ const API_URL_FAVORITES = 'https://api.thedogapi.com/v1/favourites?&api_key=a87e
             const data = await res.json()
             console.log('Load')
             console.log(data)
-            const img1 = document.getElementById('img1')
-            const img2= document.getElementById('img2')
-            const img3 = document.getElementById('img3')
-            const btn1 = document.getElementById('btn1')
-            const btn2 = document.getElementById('btn2')
-            const btn3 = document.getElementById('btn3')
+            const section = document.querySelector('#random-dogs');
+            const fragment = new DocumentFragment(); 
+
+            data.forEach(dog => {
+                const div = document.createElement('div');
+                div.classList.add('dog-container')
+                const img = document.createElement('img');
+                img.width = 150
+                const button = document.createElement('button');
+                const btnText = document.createTextNode('Save in favorites');
+                img.src = dog.url; 
+
+                button.addEventListener('click', saveFavorite.bind('id-dog', dog.id))
+                button.appendChild(btnText)
+                div.appendChild(img)
+                div.appendChild(button)
+
+                fragment.appendChild(div)
+            })
+            section.appendChild(fragment)
 
             img1.src = data[0].url
             img2.src = data[1].url
