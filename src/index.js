@@ -13,13 +13,13 @@ const API_URL_FAVORITES = 'https://api.thedogapi.com/v1/favourites?&api_key=a87e
             console.log('Load')
             console.log(data)
             const section = document.querySelector('#random-dogs');
+            const randomContainer = document.querySelector('.dog-cards-container')
             const fragment = new DocumentFragment(); 
 
             data.forEach(dog => {
                 const div = document.createElement('div');
                 div.classList.add('dog-container')
                 const img = document.createElement('img');
-                img.width = 150
                 const button = document.createElement('button');
                 const btnText = document.createTextNode('Save in favorites');
                 img.src = dog.url; 
@@ -31,15 +31,9 @@ const API_URL_FAVORITES = 'https://api.thedogapi.com/v1/favourites?&api_key=a87e
 
                 fragment.appendChild(div)
             })
-            section.appendChild(fragment)
+            randomContainer.appendChild(fragment)
+            section.appendChild(randomContainer)
 
-            img1.src = data[0].url
-            img2.src = data[1].url
-            img3.src = data[2].url
-
-            btn1.onclick = ()=> saveFavorite( data[0].id)
-            btn2.onclick = ()=> saveFavorite( data[1].id)
-            btn3.onclick = ()=>  saveFavorite( data[2].id)
 
         } catch (error){
             console.log(error)
@@ -66,7 +60,6 @@ const loadFavImg = async () => {
                 const btnText = document.createTextNode('Delete from favorites')
                 btn.appendChild(btnText)
                 img.src =  dog.image.url
-                img.width = 150
                 
                 div. appendChild(img)
                 div. appendChild(btn)

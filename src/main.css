@@ -63,6 +63,7 @@
   .dog-container img{
       margin: 25px 0px;
       border-radius: 5px;
+      width: 150px;
   }
 
   .dog-container button{
