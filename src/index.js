@@ -15,7 +15,8 @@ const API_URL_DELETE_FAVORITES = (id) => `https://api.thedogapi.com/v1/favourite
             console.log('Loading random dogs')
             console.log(data)
             const section = document.querySelector('#random-dogs');
-            const randomContainer = document.querySelector('.dog-cards-container')
+            const randomContainer = document.createElement('div')
+            randomContainer.classList.add('dog-cards-container')
             const fragment = new DocumentFragment(); 
 
             data.forEach(dog => {
@@ -59,6 +60,9 @@ const loadFavImg = async () => {
             const h2Text = document.createTextNode('Favorite Dogs')
             h2.appendChild(h2Text)
             section.appendChild(h2)
+            const favContainer = document.createElement('div')
+            favContainer.classList.add('dog-cards-container')
+
             data.forEach(dog => {
                 const div = document.createElement('div')
                 div.classList.add('dog-container')
@@ -72,8 +76,9 @@ const loadFavImg = async () => {
                 
                 div. appendChild(img)
                 div. appendChild(btn)
-                
-                section.appendChild(div)
+
+                favContainer.appendChild(div)
+                section.appendChild(favContainer)
 
             })
         } catch (error){
