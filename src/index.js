@@ -5,6 +5,9 @@ const API_URL_FAVORITES = 'https://api.thedogapi.com/v1/favourites'
 
 const API_URL_DELETE_FAVORITES = (id) => `https://api.thedogapi.com/v1/favourites/${id}`
 
+const API_URL_UPLOAD = 'https://api.thedogapi.com/v1/images/upload'
+
+
     const reloadImg = async () => {
         try{
             const res = await fetch(API_URL_RANDOM)
@@ -135,6 +138,30 @@ const loadFavImg = async () => {
             const errorNode = document.querySelector('#random-error')
             errorNode.innerText = `${error.message}`
         }  
+    }
+
+    const uploadPicture = async () =>{
+        try{
+            const form = document.getElementById('upload-form')
+            const formData = new FormData(form)
+             const res = await fetch (API_URL_UPLOAD, {
+            method: 'POST',
+            headers: {
+                'X-API-KEY': 'a87e0d4e-0554-44c3-88c6-d0fc4983e2fa',
+            },
+            body: formData,
+        })
+        const status = res.status
+        const data = await res.json()
+        if (status !== 201) throw new Error(`New error in ${status}`)
+        console.log(formData.get('file'))
+        console.log('Picture uploaded!')
+        saveFavorite(data.id)
+        } catch (error){
+            console.log(error.message)
+            const errorNode = document.querySelector('#random-error')
+            errorNode.innerText = `${error.message}`
+        }      
     }
 
     reloadImg();

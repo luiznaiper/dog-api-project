@@ -12,7 +12,7 @@
     <link
       rel="stylesheet"
       href="./src/tablet.css"
-      media="(min-width: 1024px)"
+      media="(min-width: 860px)"
     />
     <title>Dog List API</title>
 </head>
@@ -27,9 +27,17 @@
             <h2>Random dogs</h2>
         </section>
         <button class="reload" type="button" onclick="reloadImg()">Load more</button>
+        <section id="post-pictures">
+            <h2>Upload your dog picture</h2>
+            <form id="upload-form">
+                <input id="file" type="file" name="file"/>
+                <button type="button" onclick="uploadPicture()">Upload your picture</button>
+            </form>
+        </section>
         <section id="favorite-dogs" class="favorite-dogs">
             <h2>Favorite dogs</h2>        
         </section>
+      
     </main>
         <script src="./src/index.js"></script>
 </body> 
