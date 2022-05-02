@@ -1,10 +1,9 @@
 
-const API_URL_RANDOM = 'https://api.thedogapi.com/v1/images/search?limit=6&api_key=a87e0d4e-0554-44c3-88c6-d0fc4983e2fa'
+const API_URL_RANDOM = 'https://api.thedogapi.com/v1/images/search?limit=6'
 
+const API_URL_FAVORITES = 'https://api.thedogapi.com/v1/favourites'
 
-const API_URL_FAVORITES = 'https://api.thedogapi.com/v1/favourites?&api_key=a87e0d4e-0554-44c3-88c6-d0fc4983e2fa'
-
-const API_URL_DELETE_FAVORITES = (id) => `https://api.thedogapi.com/v1/favourites/${id}?&api_key=a87e0d4e-0554-44c3-88c6-d0fc4983e2fa`
+const API_URL_DELETE_FAVORITES = (id) => `https://api.thedogapi.com/v1/favourites/${id}`
 
     const reloadImg = async () => {
         try{
@@ -48,7 +47,12 @@ const API_URL_DELETE_FAVORITES = (id) => `https://api.thedogapi.com/v1/favourite
 
 const loadFavImg = async () => {
     try{
-        const res = await fetch(API_URL_FAVORITES)
+        const res = await fetch(API_URL_FAVORITES,{
+            method: 'GET',
+            headers: {
+                'X-API-KEY': 'a87e0d4e-0554-44c3-88c6-d0fc4983e2fa',
+            },
+        })
         const status = res.status
         if (status !== 200) throw new Error(`New error in ${status}`)
         const data = await res.json()
@@ -94,7 +98,8 @@ const loadFavImg = async () => {
             const res = await fetch(API_URL_FAVORITES, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'X-API-KEY': 'a87e0d4e-0554-44c3-88c6-d0fc4983e2fa',
                 },
                 body: JSON.stringify({
                     image_id: id
@@ -116,6 +121,9 @@ const loadFavImg = async () => {
         try{
             const res = await fetch(API_URL_DELETE_FAVORITES(id), {
                 method: 'DELETE',
+                headers: {
+                    'X-API-KEY': 'a87e0d4e-0554-44c3-88c6-d0fc4983e2fa'
+                }
             })
             const status = res.status
             if (status !== 200) throw new Error(`New error in ${status}`)
