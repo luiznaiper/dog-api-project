@@ -1,3 +1,7 @@
+const api = axios.create({
+    baseURL: 'https://api.thedogapi.com/v1'
+})
+api.defaults.headers.common['X-API-KEY'] = 'a87e0d4e-0554-44c3-88c6-d0fc4983e2fa'
 
 const API_URL_RANDOM = 'https://api.thedogapi.com/v1/images/search?limit=6'
 
@@ -6,6 +10,7 @@ const API_URL_FAVORITES = 'https://api.thedogapi.com/v1/favourites'
 const API_URL_DELETE_FAVORITES = (id) => `https://api.thedogapi.com/v1/favourites/${id}`
 
 const API_URL_UPLOAD = 'https://api.thedogapi.com/v1/images/upload'
+
 
 
     const reloadImg = async () => {
@@ -98,21 +103,12 @@ const loadFavImg = async () => {
 
     const saveFavorite = async (id) =>{
         try{
-            const res = await fetch(API_URL_FAVORITES, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-API-KEY': 'a87e0d4e-0554-44c3-88c6-d0fc4983e2fa',
-                },
-                body: JSON.stringify({
-                    image_id: id
-                })
+            const  {data, status} = await api.post('/favourites',{
+                image_id: id,
             })
-            const status = res.status
             if (status !== 200) throw new Error(`New error in ${status}`)
             console.log('Saved in favorites')
-            console.log(res)
-            loadFavImg()
+            loadFavImg()    
         } catch (error){
             console.log(error.message)
             const errorNode = document.querySelector('#random-error')
