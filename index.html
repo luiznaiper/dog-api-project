@@ -27,11 +27,12 @@
             <h2>Random dogs</h2>
         </section>
         <button class="reload" type="button" onclick="reloadImg()">Load more</button>
-        <section id="post-pictures">
+        <section id="post-pictures" class="post-pictures">
             <h2>Upload your dog picture</h2>
             <form id="upload-form">
-                <input id="file" type="file" name="file"/>
-                <button type="button" onclick="uploadPicture()">Upload your picture</button>
+                <input id="file" type="file" name="file" class="file" title=""/>
+                <label for="file">Select your picture</label>
+                <button class="upload" type="button" onclick="uploadPicture()">Upload your picture</button>
             </form>
         </section>
         <section id="favorite-dogs" class="favorite-dogs">

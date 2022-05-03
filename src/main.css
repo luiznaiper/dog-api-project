@@ -81,7 +81,7 @@
     cursor: pointer;
 }
 
-   .reload{
+   .reload, label{
     background-color: var(--principal);
     color: var(--main);
     border: none;
@@ -96,6 +96,54 @@
     border: 1px solid var(--principal);
     cursor: pointer;
   }
+
+  label{
+    font-size: 1.3rem;
+  }
+
+  label:hover{
+    background-color: transparent;
+    color: var(--principal);
+    border: 1px solid var(--principal);
+    cursor: pointer;
+  }
+
+.upload{
+  background-color: var(--main);
+  color: var(--principal);
+  border: 1px solid var(--principal);
+  padding: 10px 45px;
+  border-radius: 5px;
+  margin: 25px 0; 
+}
+
+.upload:hover{
+  background-color: var(--principal);
+  color: var(--main);
+  border: 1px solid var(--main);
+  cursor: pointer;
+}
+
+.post-pictures{
+  margin: 70px 0;
+}
+.post-pictures h2{
+  margin-bottom: 20px;
+}
+
+
+form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.file{
+  display: none;
+}
+
+
 
   .favorite-dogs{
       margin-bottom: 30px;
